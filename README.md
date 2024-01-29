@@ -140,7 +140,7 @@ Join our community!
 -------------
 🚀 Join the social media vibe with us?
 
-- [Twitter](https://twitter.com/leeroo_ai)
+- [Twitter](https://twitter.com/LeerooAI)
 - [LinkedIn](https://www.linkedin.com/company/leeroo)
 - [Website](https://www.leeroo.com)
 
