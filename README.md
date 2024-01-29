@@ -16,7 +16,7 @@ Leeroo Orchestrator is a pioneering architecture that orchestrates expert LLMs t
 
 - **[Get Started](https://docs.google.com/forms/d/e/1FAIpQLSfv6qgFqzVAZrSiTapEewoFDOL5hPr5Nw8Z3WuYhADSDxb2EA/viewform)**: Request access to start using Leeroo Orchestrator V1.
 - **[Contribute](CONTRIBUTING.md)**: Interested in contributing? Check our contributor guide.
-- **[Documentation]()**: For more detailed information about using Leeroo Orchestrator.
+- **[Documentation](https://leeroo-ai.github.io/leeroo_orchestrator/)**: For more detailed information about using Leeroo Orchestrator.
 
 ### Dive Deeper
 
