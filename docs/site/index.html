@@ -534,7 +534,7 @@
         
   
   <span class="md-ellipsis">
-    VLLM AMI
+    Leeroo vllm ami
   </span>
   
 
@@ -615,14 +615,14 @@
 <li><code>./utils/*</code> - Includes utility functions used by servers to enhance functionality.</li>
 <li><code>.env</code> - Specifies the required environment variables for proper system operation.</li>
 </ul>
-<pre><code class="language-pyhton">AWS_ACCESS_KEY_ID = &quot;*****&quot;
-AWS_SECRET_ACCESS_KEY = &quot;*****&quot;
-VLLM_EXPERT_AMI_ID = &quot;*****&quot;
-OPENAI_ORGANIZATION = &quot;*****&quot;
-OPENAI_API_KEY = &quot;*****&quot;
-AWS_SAGEMAKER_ROLE_NAME = &quot;*****&quot; # Role is used for sagemaker connections.
-HUGGING_FACE_HUB_TOKEN = &quot;*****&quot;
-SECURITY_GROUP_ID = &quot;****&quot; # SecurityGroupId is used to create an instance, make sure to have inference port open for this group.
+<pre><code class="language-pyhton">
+AWS_SAGEMAKER_ROLE_NAME = &quot;*****&quot;   # Role is used for sagemaker connections.
+SECURITY_GROUP_ID       = &quot;****&quot;    # SecurityGroupId is used to create an instance. make sure to have inference port open for this group.
+AWS_ACCESS_KEY_ID       = &quot;*****&quot;   # 
+AWS_SECRET_ACCESS_KEY   = &quot;*****&quot;   #
+HUGGING_FACE_HUB_TOKEN  = &quot;*****&quot;   # Required for authenticating with HF for downloading checkopints
+OPENAI_ORGANIZATION     = &quot;*****&quot;
+OPENAI_API_KEY          = &quot;*****&quot;   # If openai models are used as experts
 </code></pre>
 <h2 id="run-orchestrator-server">Run Orchestrator server</h2>
 <pre><code class="language-python">import json

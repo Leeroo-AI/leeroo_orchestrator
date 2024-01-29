@@ -624,7 +624,7 @@
         
   
   <span class="md-ellipsis">
-    VLLM AMI
+    Leeroo vllm ami
   </span>
   
 
@@ -1159,7 +1159,7 @@ Args:
 
 
 <h2 id="app.utils.aws_ec2_utils.create_ec2_instance" class="doc doc-heading">
-          <code class="highlight language-python"><span class="n">create_ec2_instance</span><span class="p">(</span><span class="n">aws_engine</span><span class="p">,</span> <span class="n">expert_instance_name</span><span class="p">,</span> <span class="n">expert_instance_type</span><span class="o">=</span><span class="s1">&#39;g5.2xlarge&#39;</span><span class="p">,</span> <span class="n">KeyName</span><span class="o">=</span><span class="s1">&#39;connection-key&#39;</span><span class="p">,</span> <span class="n">ami_id</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">create_ec2_instance</span><span class="p">(</span><span class="n">aws_engine</span><span class="p">,</span> <span class="n">expert_instance_name</span><span class="p">,</span> <span class="n">expert_instance_type</span><span class="o">=</span><span class="s1">&#39;g5.2xlarge&#39;</span><span class="p">,</span> <span class="n">KeyName</span><span class="o">=</span><span class="s1">&#39;connection-key&#39;</span><span class="p">,</span> <span class="n">ami_id</span><span class="o">=</span><span class="s1">&#39;ami-your-ec2-ami-with-vllm-installed&#39;</span><span class="p">)</span></code>
 
 </h2>
 
@@ -1251,7 +1251,7 @@ Args:
             </div>
           </td>
           <td>
-                <code>None</code>
+                <code>&#39;ami-your-ec2-ami-with-vllm-installed&#39;</code>
           </td>
         </tr>
     </tbody>
@@ -1313,7 +1313,7 @@ Args:
         <span class="n">expert_instance_name</span><span class="p">,</span>
         <span class="n">expert_instance_type</span><span class="o">=</span><span class="s1">&#39;g5.2xlarge&#39;</span><span class="p">,</span>
         <span class="n">KeyName</span> <span class="o">=</span> <span class="s1">&#39;connection-key&#39;</span><span class="p">,</span>
-        <span class="n">ami_id</span><span class="o">=</span><span class="kc">None</span>
+        <span class="n">ami_id</span> <span class="o">=</span> <span class="s2">&quot;ami-your-ec2-ami-with-vllm-installed&quot;</span>
     <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Created an ec2 instance in the default region.  </span>
@@ -1329,7 +1329,7 @@ Args:
 <span class="sd">                                conda environment to be used is pytorch.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">ami_id</span><span class="p">:</span>
-        <span class="n">ami_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;VLLM_EXPERT_AMI_ID&quot;</span><span class="p">)</span>
+        <span class="k">raise</span>
 
     <span class="n">instance</span> <span class="o">=</span> <span class="n">aws_engine</span><span class="o">.</span><span class="n">ec2_resource</span><span class="o">.</span><span class="n">create_instances</span><span class="p">(</span>  
         <span class="n">ImageId</span> <span class="o">=</span> <span class="n">ami_id</span><span class="p">,</span>
