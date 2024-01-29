@@ -1,0 +1,34 @@
+site_name: Leeroo Orchestrator
+
+theme:
+  name: material
+  palette:
+    primary: black
+    accent: green
+  logo: "https://static.wixstatic.com/media/08cdb2_236931f025d74b05b46ce134711a9bd1~mv2.png/v1/fill/w_114,h_122,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/DALL_E_2023-12-08_10_02_20_-_Design_a_logo_for_a_tech-based_startup_called__Leeroo__that_s.png"
+  icon: "https://static.wixstatic.com/media/08cdb2_236931f025d74b05b46ce134711a9bd1~mv2.png/v1/fill/w_114,h_122,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/DALL_E_2023-12-08_10_02_20_-_Design_a_logo_for_a_tech-based_startup_called__Leeroo__that_s.png"
+
+plugins:
+- search
+- autorefs
+- mkdocstrings:
+   default_handler: python
+
+nav:
+  - Docs: index.md
+  - Orchestrator: Orchestrator.md
+  - Servers: 
+    - AWS EC2 VLLM: aws_ec2_vllm.md
+    - AWS Sagemaker: aws_sagemaker.md
+    - Openai GPT: openai_gpt.md
+    - Dummy Demo Server: demo_server.md
+  - Utils: 
+    - SSH Utils: ssh_utils.md
+    - Ec2 Utils: aws_ec2_utils.md
+    - Sagemaker Utils: aws_sagemaker_utils.md
+  - Leeroo vllm ami: aws_ami.md
+
+
+extra:
+  logo:
+    href: 

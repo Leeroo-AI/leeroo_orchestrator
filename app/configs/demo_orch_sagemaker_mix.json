@@ -1,0 +1,29 @@
+{
+    "region": "us-east-1",
+
+    "orchestrator": {
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "backend": "dummy_orchestrator"
+    },
+
+    "experts": [
+        {
+            "expert_id": 0,
+            "model_id": "mistralai/Mistral-7B-v0.1",
+            "instance_type": "ml.g5.xlarge",
+            "backend": "sagemaker_backend"
+        },
+        {
+            "expert_id": 1,
+            "model_id": "gpt-3.5-turbo",
+            "backend": "openai_backend",
+            "base_url": "https://api.openai.com/v1"
+        },
+        {
+            "expert_id": 2,
+            "model_id": "gpt-4-1106-preview",
+            "backend": "openai_backend",
+            "base_url": "https://api.openai.com/v1"
+        }
+    ]
+}

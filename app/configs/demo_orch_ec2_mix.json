@@ -1,0 +1,35 @@
+{
+    "region": "us-east-1",
+
+    "orchestrator": {
+        "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+        "backend": "dummy_orchestrator"
+    },
+
+    "experts": [
+        {
+            "expert_id": 0,
+            "model_id": "mistralai/Mistral-7B-Instruct-v0.2",
+            "backend": "ec2_vllm_backend",
+            "instance_type": "g5.2xlarge",
+            "KeyName": "connection-key",
+            "KeyPath": "app/keys/connection-key.pem",
+            "ami_id":"ami-ec2ami-with-vllm-installed"
+        },
+        {
+            "expert_id": 1,
+            "model_id": "meta-math/MetaMath-Mistral-7B",
+            "backend": "ec2_vllm_backend",
+            "instance_type": "g5.xlarge",
+            "KeyName": "connection-key",
+            "KeyPath": "app/keys/connection-key.pem",
+            "ami_id":"ami-ec2ami-with-vllm-installed"
+        },
+        {
+            "expert_id": 2,
+            "model_id": "gpt-3.5-turbo",
+            "backend": "openai_backend",
+            "base_url": "https://api.openai.com/v1"
+        }
+    ]
+}
