@@ -72,7 +72,7 @@ pip intall -e .
 ```
 
 ### Running on Ec2 using Vllm
-For users who favor EC2 on-premise private deployment, we have open-sourced an AWS AMI that comes preinstalled with PyTorch2 and VLLM, please refer [docs]() for detailed insight. We provide demo configurations that facilitate deploying one model per instance. If you wish to deploy multiple models on the same instance, simply alter the tmux session name in the corresponding configuration. It is recommended to have the following environment variables prepared for the seamless launch of an instance declared in *.env* file :     
+For users who favor EC2 on-premise private deployment, we have open-sourced an AWS AMI that comes preinstalled with PyTorch2 and VLLM, please refer [docs](https://leeroo-ai.github.io/leeroo_orchestrator/) for detailed insight. We provide demo configurations that facilitate deploying one model per instance. If you wish to deploy multiple models on the same instance, simply alter the tmux session name in the corresponding configuration. It is recommended to have the following environment variables prepared for the seamless launch of an instance declared in *.env* file :     
 ```py
 AWS_ACCESS_KEY_ID       = "*****"
 AWS_SECRET_ACCESS_KEY   = "*****"
