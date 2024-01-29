@@ -165,5 +165,5 @@ If you use this code for your research, please cite the following work:
 }
 ```
 
-Have a question not listed here? Open [a GitHub Issue](https://github.com/Leeroo-AI/leeroo_orchestrator_private/issues) or 
+Have a question not listed here? Open [a GitHub Issue](https://github.com/Leeroo-AI/leeroo_orchestrator/issues) or 
 send us an [email](alireza@leeroo.com).
