@@ -1,4 +1,4 @@
-<h1>Leeroo Orchestrator <img alt='Leeroo logo' src='logo.png' width='148' align='right' /></h1>
+<h1>Leeroo Orchestration of Experts <img alt='Leeroo logo' src='logo.png' width='148' align='right' /></h1>
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-red.svg)](#python)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
@@ -14,8 +14,7 @@ Leeroo Orchestrator is a pioneering architecture that orchestrates expert LLMs t
 
 ### Quick Start
 
-- **[Get Started](https://docs.google.com/forms/d/e/1FAIpQLSfv6qgFqzVAZrSiTapEewoFDOL5hPr5Nw8Z3WuYhADSDxb2EA/viewform)**: Request access to start using Leeroo Orchestrator V1.
-- **[Contribute](CONTRIBUTING.md)**: Interested in contributing? Check our contributor guide.
+- **[Request API access](https://docs.google.com/forms/d/e/1FAIpQLSfv6qgFqzVAZrSiTapEewoFDOL5hPr5Nw8Z3WuYhADSDxb2EA/viewform)**: Request access to start using Leeroo Orchestrator V1.
 - **[Documentation](https://leeroo-ai.github.io/leeroo_orchestrator/)**: For more detailed information about using Leeroo Orchestrator.
 
 ### Dive Deeper
