@@ -20,7 +20,7 @@ Leeroo Orchestrator is a pioneering architecture that orchestrates expert LLMs t
 ### Dive Deeper
 
 If you're interested in the mechanics behind Leeroo Orchestrator and our vision for AI's future:
-- **[Blog Post](https://www.leeroo.com/post/leeroo-orchestrator-v1-towards-an-ai-operating-system)**: Read about our journey towards creating an AI Operating System.
+- **[Blog Post](https://www.leeroo.com/2024/01/29/leeroo-orchestrator-v1-towards-an-ai-operating-system/)**: Read about our journey towards creating an AI Operating System.
 - **[Research Paper](https://arxiv.org/abs/2401.13979)**: Explore the detailed study behind Leeroo Orchestrator's development.
 
 Leeroo Orchestrator evolves AI by first leveraging the best LLMs available, then identifying gaps in expertise to develop ultra-efficient experts, and finally learning to integrate these new experts. This cycle ensures continuous improvement in both the depth and breadth of AI capabilities over time.
