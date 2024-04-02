@@ -14,7 +14,7 @@ Leeroo Orchestrator is a pioneering architecture that orchestrates expert LLMs t
 
 ### Quick Start
 
-- **[Request API access](https://docs.google.com/forms/d/e/1FAIpQLSfv6qgFqzVAZrSiTapEewoFDOL5hPr5Nw8Z3WuYhADSDxb2EA/viewform)**: Request access to start using Leeroo Orchestrator V1.
+- **[Request access](https://www.leeroo.com/contact/)**: Request access to start using Leeroo Orchestrator V1.
 - **[Documentation](https://leeroo-ai.github.io/leeroo_orchestrator/)**: For more detailed information about using Leeroo Orchestrator.
 
 ### Dive Deeper
@@ -22,6 +22,7 @@ Leeroo Orchestrator is a pioneering architecture that orchestrates expert LLMs t
 If you're interested in the mechanics behind Leeroo Orchestrator and our vision for AI's future:
 - **[Blog Post](https://www.leeroo.com/2024/01/29/leeroo-orchestrator-v1-towards-an-ai-operating-system/)**: Read about our journey towards creating an AI Operating System.
 - **[Research Paper](https://arxiv.org/abs/2401.13979)**: Explore the detailed study behind Leeroo Orchestrator's development.
+- **[Huggingface Blog](https://huggingface.co/blog/alirezamsh/leeroo-multi-model-system)**: Further details on our Leeroo Dedicated Math expert.
 
 Leeroo Orchestrator evolves AI by first leveraging the best LLMs available, then identifying gaps in expertise to develop ultra-efficient experts, and finally learning to integrate these new experts. This cycle ensures continuous improvement in both the depth and breadth of AI capabilities over time.
 
@@ -29,7 +30,8 @@ Leeroo Orchestrator evolves AI by first leveraging the best LLMs available, then
 Content
 -------------
 
-- **[News Release](#news)**  
+- **[News Release](#news)**
+- **[Leeroo Dedidcated Math](#leeroomath)**
 - **[Installation](#installation)**  
 - **[Community](#community)**  
 - **[Citation](#citation)**  
@@ -54,11 +56,49 @@ Through a dynamic training process that leverages a self-play loop, the Orchestr
 
 Central to our vision is reshaping LLMs by focusing on domain-specific expertise. Current LLMs often overlap in knowledge, lacking depth. The Orchestrator not only identifies the most effective expert for immediate tasks but also highlights areas lacking in-depth expertise, guiding the development of new, ultra-efficient domain-specific models.
 
-As we gradually roll out **access to Leeroo V1 API** on a first-come, first-served basis, we're eager for you to experience the capabilities of Leeroo firsthand and encourage interested parties to [request access](https://docs.google.com/forms/d/e/1FAIpQLSfv6qgFqzVAZrSiTapEewoFDOL5hPr5Nw8Z3WuYhADSDxb2EA/viewform). We're also open to discussions about the potential for tailored Virtual Private Cloud (VPC) or on-premise installations. Our production system, currently based on **VLLM** on **EC2** and **SageMaker**, is expanding to accommodate more cloud providers.
+As we gradually roll out **access to Leeroo Platform** on a first-come, first-served basis, we're eager for you to experience the capabilities of Leeroo firsthand and encourage interested parties to [request access]([https://docs.google.com/forms/d/e/1FAIpQLSfv6qgFqzVAZrSiTapEewoFDOL5hPr5Nw8Z3WuYhADSDxb2EA/viewform](https://www.leeroo.com/contact/)). We're also open to discussions about the potential for tailored Virtual Private Cloud (VPC) or on-premise installations. Our production system, currently based on **VLLM** on **EC2** and **SageMaker**, is expanding to accommodate more cloud providers.
 
 As we start training Leeroo V2, your insights are invaluable to us. Whether you're a researcher in AI, an AI practitioner, or simply an enthusiastic user, we're eager to integrate your ideas into the next iteration of Leeroo. We invite you to share your thoughts and suggestions with us and join us in shaping the future of AI together. Additionally, the deployment of Leeroo V1, as well as the training of Leeroo V2, require significant GPU resources. If you are able to support us in this area, please reach out.
 
 For a deeper dive into the Leeroo Orchestrator V1, refer to our [publication](https://arxiv.org/abs/2401.13979). Results are available at [here](https://drive.google.com/file/d/13hKt8KYH8j7HCPixrAyl9rGhOFCOhsOo/view?usp=sharing).
+
+<a name="leeroomath"/>  
+
+Leeroo Dedidcated Math 7b 🤗
+-------------
+
+The model is on [Leeroo Huggingface hub](https://huggingface.co/leeroo) as [LeerooDedicated-Math-7b](https://huggingface.co/leeroo/LeerooDedidcated-Math-7b).  
+In evaluations using the GSM8k dataset of [OpenLLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard), Leeroo Math 7B model achieved **an accuracy of 84.77% in 5-shot setting**, positioning it among the top performers in its class and notably surpassing the MetaMath 7B model (its base model), which scores 68.84% on the same dataset. This was accomplished while relying on GPT-4 for responses to half of the questions posed by GSM8k.
+
+### Sample Usage
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("leeroo/LeerooDedicated-Math-7b", trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("leeroo/LeerooDedicated-Math-7b")
+device = model.device
+
+# the following question is answered by the leeroo expert
+question = "Natalia sold clips to 48 of her friends in April,and then she sold half as many clips in May.How many clips did Natalia sell altogether in April and May?"
+encodeds = tokenizer([question], return_tensors="pt")
+model_inputs = encodeds['input_ids'].to(device)
+generated_ids = model.generate(model_inputs, max_new_tokens=100, do_sample=False)
+decoded = tokenizer.batch_decode(generated_ids)
+print(decoded[0])
+# Natalia sold 48 clips in April.\nIn May, she sold half as many clips as in April,
+# so she sold 48/2 = 24 clips.\nAltogether, Natalia sold 48 + 24 = 72 clips in April and May.\n#### 72\nThe answer is: 72</s>
+
+# sends the following question to GPT4
+question = "James loves to go swimming and has to swim across a 20-mile lake.  He can swim at a pace of 2 miles per hour.  He swims 60% of the distance.  After that, he stops on an island and rests for half as long as the swimming time.  He then finishes the remaining distance while going half the speed.  How long did it take him to get across the lake?"
+encodeds = tokenizer([question], return_tensors="pt")
+model_inputs = encodeds['input_ids'].to(device)
+generated_ids = model.generate(model_inputs, max_new_tokens=100, do_sample=False)
+decoded = tokenizer.batch_decode(generated_ids)
+print(decoded[0])
+# <GPT4></s>
+```
+
 
 <a name="installation"/>  
 
@@ -143,6 +183,7 @@ Join our community!
 - [Twitter](https://twitter.com/LeerooAI)
 - [LinkedIn](https://www.linkedin.com/company/leeroo)
 - [Website](https://www.leeroo.com)
+- [Discord](https://discord.gg/tmuXGe3K)
 
 
 <a name="citation"/>  
