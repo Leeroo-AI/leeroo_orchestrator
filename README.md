@@ -31,8 +31,8 @@ Content
 -------------
 
 - **[News Release](#news)**
+- **[Installation](#installation)**
 - **[Leeroo Dedidcated Math](#leeroomath)**
-- **[Installation](#installation)**  
 - **[Community](#community)**  
 - **[Citation](#citation)**  
 
@@ -61,43 +61,6 @@ As we gradually roll out **access to Leeroo Platform** on a first-come, first-se
 As we start training Leeroo V2, your insights are invaluable to us. Whether you're a researcher in AI, an AI practitioner, or simply an enthusiastic user, we're eager to integrate your ideas into the next iteration of Leeroo. We invite you to share your thoughts and suggestions with us and join us in shaping the future of AI together. Additionally, the deployment of Leeroo V1, as well as the training of Leeroo V2, require significant GPU resources. If you are able to support us in this area, please reach out.
 
 For a deeper dive into the Leeroo Orchestrator V1, refer to our [publication](https://arxiv.org/abs/2401.13979). Results are available at [here](https://drive.google.com/file/d/13hKt8KYH8j7HCPixrAyl9rGhOFCOhsOo/view?usp=sharing).
-
-<a name="leeroomath"/>  
-
-Leeroo Dedidcated Math 7b 🤗
--------------
-
-The model is on [Leeroo Huggingface hub](https://huggingface.co/leeroo) as [LeerooDedicated-Math-7b](https://huggingface.co/leeroo/LeerooDedidcated-Math-7b).  
-In evaluations using the GSM8k dataset of [OpenLLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard), Leeroo Math 7B model achieved **an accuracy of 84.77% in 5-shot setting**, positioning it among the top performers in its class and notably surpassing the MetaMath 7B model (its base model), which scores 68.84% on the same dataset. This was accomplished while relying on GPT-4 for responses to half of the questions posed by GSM8k.
-
-### Sample Usage
-
-```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-model = AutoModelForCausalLM.from_pretrained("leeroo/LeerooDedicated-Math-7b", trust_remote_code=True)
-tokenizer = AutoTokenizer.from_pretrained("leeroo/LeerooDedicated-Math-7b")
-device = model.device
-
-# the following question is answered by the leeroo expert
-question = "Natalia sold clips to 48 of her friends in April,and then she sold half as many clips in May.How many clips did Natalia sell altogether in April and May?"
-encodeds = tokenizer([question], return_tensors="pt")
-model_inputs = encodeds['input_ids'].to(device)
-generated_ids = model.generate(model_inputs, max_new_tokens=100, do_sample=False)
-decoded = tokenizer.batch_decode(generated_ids)
-print(decoded[0])
-# Natalia sold 48 clips in April.\nIn May, she sold half as many clips as in April,
-# so she sold 48/2 = 24 clips.\nAltogether, Natalia sold 48 + 24 = 72 clips in April and May.\n#### 72\nThe answer is: 72</s>
-
-# sends the following question to GPT4
-question = "James loves to go swimming and has to swim across a 20-mile lake.  He can swim at a pace of 2 miles per hour.  He swims 60% of the distance.  After that, he stops on an island and rests for half as long as the swimming time.  He then finishes the remaining distance while going half the speed.  How long did it take him to get across the lake?"
-encodeds = tokenizer([question], return_tensors="pt")
-model_inputs = encodeds['input_ids'].to(device)
-generated_ids = model.generate(model_inputs, max_new_tokens=100, do_sample=False)
-decoded = tokenizer.batch_decode(generated_ids)
-print(decoded[0])
-# <GPT4></s>
-```
 
 
 <a name="installation"/>  
@@ -173,6 +136,43 @@ for expert_id, expert in leeroo_orchestrator.experts.items():
     res = expert.stop_server()
     print(res)
 ``` 
+
+<a name="leeroomath"/>  
+
+Leeroo Dedidcated Math 7b 🤗
+-------------
+
+The model is on [Leeroo Huggingface hub](https://huggingface.co/leeroo) as [LeerooDedicated-Math-7b](https://huggingface.co/leeroo/LeerooDedidcated-Math-7b).  
+In evaluations using the GSM8k dataset of [OpenLLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard), Leeroo Math 7B model achieved **an accuracy of 84.77% in 5-shot setting**, positioning it among the top performers in its class and notably surpassing the MetaMath 7B model (its base model), which scores 68.84% on the same dataset. This was accomplished while relying on GPT-4 for responses to half of the questions posed by GSM8k.
+
+### Sample Usage
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("leeroo/LeerooDedicated-Math-7b", trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("leeroo/LeerooDedicated-Math-7b")
+device = model.device
+
+# the following question is answered by the leeroo expert
+question = "Natalia sold clips to 48 of her friends in April,and then she sold half as many clips in May.How many clips did Natalia sell altogether in April and May?"
+encodeds = tokenizer([question], return_tensors="pt")
+model_inputs = encodeds['input_ids'].to(device)
+generated_ids = model.generate(model_inputs, max_new_tokens=100, do_sample=False)
+decoded = tokenizer.batch_decode(generated_ids)
+print(decoded[0])
+# Natalia sold 48 clips in April.\nIn May, she sold half as many clips as in April,
+# so she sold 48/2 = 24 clips.\nAltogether, Natalia sold 48 + 24 = 72 clips in April and May.\n#### 72\nThe answer is: 72</s>
+
+# sends the following question to GPT4
+question = "James loves to go swimming and has to swim across a 20-mile lake.  He can swim at a pace of 2 miles per hour.  He swims 60% of the distance.  After that, he stops on an island and rests for half as long as the swimming time.  He then finishes the remaining distance while going half the speed.  How long did it take him to get across the lake?"
+encodeds = tokenizer([question], return_tensors="pt")
+model_inputs = encodeds['input_ids'].to(device)
+generated_ids = model.generate(model_inputs, max_new_tokens=100, do_sample=False)
+decoded = tokenizer.batch_decode(generated_ids)
+print(decoded[0])
+# <GPT4></s>
+```
 
 <a name="community"/>   
 
